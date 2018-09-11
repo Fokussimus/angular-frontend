@@ -1,0 +1,12 @@
+body {
+    background-color: grey;
+}
+
+.navbar {
+    background-color: white;
+    color: black
+}
+
+.logo {
+    height: 25px;
+}
