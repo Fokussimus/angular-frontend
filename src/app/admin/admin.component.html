@@ -1,1 +1,22 @@
-<md-editor name="Content" [(ngModel)]="content" [height]="'200px'" required></md-editor>
+<div class="container-fluid">
+  
+    <div *ngIf="articles$ | async as articles; else loading">
+        <mat-select placeholder="select article" [(value)]="article">
+          <mat-option *ngFor="let a of articles" [value]="a">
+            {{a.title}}
+          </mat-option>
+          <mat-option>
+            Create New...
+          </mat-option>
+        </mat-select>
+          <p *ngIf="!articles.length">Es wurden noch keine Artikel eingetragen.</p>
+      </div>
+      <ng-template #loading>
+        loading...
+      </ng-template>
+  <md-editor name="Content" [(ngModel)]="article.content" [height]="'200px'" required></md-editor>
+  <!-- <ng-template #empty>
+      <md-editor *ngIf="article; else empty" name="Content" [(ngModel)]="content" [height]="'200px'" required></md-editor>
+    </ng-template> -->
+  <p *ngIf="article">{{article._id}}</p>
+</div>

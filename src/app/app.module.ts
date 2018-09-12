@@ -7,7 +7,7 @@ import { AdminComponent } from './admin/admin.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
-import {MatToolbarModule} from '@angular/material/toolbar';
+import { MatToolbarModule, MatSelectModule } from '@angular/material';
 import { ArticlelistComponent } from './articlelist/articlelist.component';
 import { ArticledetailComponent } from './articledetail/articledetail.component';
 
@@ -37,6 +37,7 @@ import { FormsModule } from '@angular/forms';
     NgbModule,
     BrowserAnimationsModule,
     MatToolbarModule,
+    MatSelectModule,
     AppRoutingModule,
     HttpModule,
     NgxMdModule.forRoot(),

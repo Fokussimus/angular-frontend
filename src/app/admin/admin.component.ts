@@ -1,4 +1,8 @@
+import { ArticleFactory } from './../model/article-factory';
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Article } from '../model/article';
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-admin',
@@ -8,8 +12,13 @@ import { Component, OnInit } from '@angular/core';
 export class AdminComponent implements OnInit {
 
   content = '#test';
+  articles$: Observable<Article[]>;
+  article: Article;
 
-  constructor() { }
+  constructor(private ds: DataService) {
+    this.articles$ = ds.getAllArticles();
+    this.article = ArticleFactory.empty();
+  }
 
   ngOnInit() {
   }
