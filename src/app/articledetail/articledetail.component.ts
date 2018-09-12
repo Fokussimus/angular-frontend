@@ -15,6 +15,7 @@ export class ArticledetailComponent implements OnInit {
   constructor(private ds: DataService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
+    console.log(this.route.snapshot.data['article']);
     this.article = this.route.snapshot.data['article'];
   }
 

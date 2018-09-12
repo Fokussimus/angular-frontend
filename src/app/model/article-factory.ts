@@ -11,7 +11,7 @@ export class ArticleFactory {
         rawArticle._id,
         rawArticle.title,
         rawArticle.summary,
-        rawArticle.conten
+        rawArticle.content
         );
     }
 }

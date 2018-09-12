@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { ArticlelistComponent } from './articlelist/articlelist.component';
 import { ArticledetailComponent } from './articledetail/articledetail.component';
+import { ArticleResolver } from './article-resolver.service';
 
 export const routes: Routes = [
     {
@@ -16,7 +17,10 @@ export const routes: Routes = [
     },
     {
         path: 'articles/:id',
-        component: ArticledetailComponent
+        component: ArticledetailComponent,
+        resolve: {
+            article: ArticleResolver
+        }
     }
 ];
 

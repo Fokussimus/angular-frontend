@@ -17,6 +17,10 @@ import { DataService } from './data.service';
 import { HttpModule } from '@angular/http';
 import { ArticleListItemComponent } from './article-list-item/article-list-item.component';
 
+import { ArticleResolver } from './article-resolver.service';
+
+import { NgxMdModule } from 'ngx-md';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,9 +35,10 @@ import { ArticleListItemComponent } from './article-list-item/article-list-item.
     BrowserAnimationsModule,
     MatToolbarModule,
     AppRoutingModule,
-    HttpModule
+    HttpModule,
+    NgxMdModule.forRoot()
   ],
-  providers: [DataService],
+  providers: [DataService, ArticleResolver],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
