@@ -20,6 +20,9 @@ import { ArticleListItemComponent } from './article-list-item/article-list-item.
 import { ArticleResolver } from './article-resolver.service';
 
 import { NgxMdModule } from 'ngx-md';
+import { LMarkdownEditorModule } from 'ngx-markdown-editor';
+
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -36,7 +39,9 @@ import { NgxMdModule } from 'ngx-md';
     MatToolbarModule,
     AppRoutingModule,
     HttpModule,
-    NgxMdModule.forRoot()
+    NgxMdModule.forRoot(),
+    LMarkdownEditorModule,
+    FormsModule
   ],
   providers: [DataService, ArticleResolver],
   bootstrap: [AppComponent]
