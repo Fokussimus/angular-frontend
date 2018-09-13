@@ -1,9 +1,7 @@
-body {
-    background-color: grey;
-}
 
 .navbar {
-    background-color: white;
+    background-color: gray;
+    border-radius: 0px;
     color: black
 }
 

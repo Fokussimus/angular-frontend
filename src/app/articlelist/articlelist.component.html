@@ -1,16 +1,13 @@
 <div class="container-fluid">
-  <p>
-      articlelist works!
-    </p>
-    <div *ngIf="articles$ | async as articles; else loading">
-      <ul *ngFor="let a of articles">
-          <li><a class="app-article-list-item" [article]="a" [routerLink]="a._id"></a></li>
-      </ul>
-        
-        <p *ngIf="!articles.length">Es wurden noch keine Artikel eingetragen.</p>
-    </div>
-    <ng-template #loading>
-      loading...
-    </ng-template>
+  <div *ngIf="articles$ | async as articles; else loading">
+    <ul *ngFor="let a of articles">
+        <li><a class="app-article-list-item" [article]="a" [routerLink]="a._id"></a></li>
+    </ul>
+      
+      <p *ngIf="!articles.length">Es wurden noch keine Artikel eingetragen.</p>
+  </div>
+  <ng-template #loading>
+    loading...
+  </ng-template>
 </div>
 

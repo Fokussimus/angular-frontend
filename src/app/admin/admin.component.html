@@ -1,22 +1,38 @@
 <div class="container-fluid">
   
     <div *ngIf="articles$ | async as articles; else loading">
-        <mat-select placeholder="select article" [(value)]="article">
-          <mat-option *ngFor="let a of articles" [value]="a">
-            {{a.title}}
-          </mat-option>
-          <mat-option>
-            Create New...
-          </mat-option>
-        </mat-select>
-          <p *ngIf="!articles.length">Es wurden noch keine Artikel eingetragen.</p>
-      </div>
-      <ng-template #loading>
-        loading...
-      </ng-template>
-  <md-editor name="Content" [(ngModel)]="article.content" [height]="'200px'" required></md-editor>
+      <mat-select placeholder="select article" [(value)]="article">
+        <mat-option *ngFor="let a of articles" [value]="a">
+          {{a.title}}
+        </mat-option>
+        <mat-option [value]="emptyArticle">
+          Create New...
+        </mat-option>
+      </mat-select>
+        <p *ngIf="!articles.length">Es wurden noch keine Artikel eingetragen.</p>
+    </div>
+    <ng-template #loading>
+      loading...
+    </ng-template>
+    <hr>
+    <mat-form-field id="title_input">
+      <input matInput placeholder="Title" [(ngModel)]="article.title">
+    </mat-form-field>
+    <h2>Article Summary:</h2>
+    <md-editor name="Summary" [(ngModel)]="article.summary" [height]="'200px'" required></md-editor>
+    <h2>Article Content:</h2>
+    <md-editor name="Content" [(ngModel)]="article.content" [height]="'200px'" required></md-editor>
   <!-- <ng-template #empty>
       <md-editor *ngIf="article; else empty" name="Content" [(ngModel)]="content" [height]="'200px'" required></md-editor>
     </ng-template> -->
-  <p *ngIf="article">{{article._id}}</p>
+    <p *ngIf="article">{{article._id}}</p>
+    <span class="btn_container">
+      <button class="btn" (click)="saveArticle()">Save</button>
+    </span>
+    <span class="btn_container">
+      <button class="btn">Publish</button>
+    </span>
+    <span class="btn_container">
+      <button class="btn" [routerLink]="'../articles'">Cancel</button>
+    </span>
 </div>

@@ -11,9 +11,9 @@ import { DataService } from '../data.service';
 })
 export class AdminComponent implements OnInit {
 
-  content = '#test';
   articles$: Observable<Article[]>;
   article: Article;
+  emptyArticle = ArticleFactory.empty();
 
   constructor(private ds: DataService) {
     this.articles$ = ds.getAllArticles();
@@ -21,6 +21,14 @@ export class AdminComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  saveArticle() {
+    if (this.article._id) {
+      this.ds.udpateArticle(this.article);
+    } else {
+      this.ds.createArticle(this.article);
+    }
   }
 
 }
