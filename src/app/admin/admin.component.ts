@@ -25,9 +25,9 @@ export class AdminComponent implements OnInit {
 
   saveArticle() {
     if (this.article._id) {
-      this.ds.udpateArticle(this.article);
+      this.ds.udpateArticle(this.article).subscribe(res => alert('Artikel aktualisiert'));
     } else {
-      this.ds.createArticle(this.article);
+      this.ds.createArticle(this.article).subscribe(res => alert('Artikel gespeichert'));
     }
   }
 

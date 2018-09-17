@@ -12,7 +12,8 @@ import { ArticleFactory } from './model/article-factory';
   providedIn: 'root'
 })
 export class DataService {
-  private api = 'http://172.20.3.239:3000';
+  private api = 'http://localhost:3000';
+  // private api = 'http://172.20.3.239:3000';
   private headers: Headers = new Headers();
 
   constructor(private http: Http) {
@@ -45,8 +46,8 @@ export class DataService {
   }
 
   createArticle(article: Article): Observable<any> {
-    return this.http.post(`${this.api}/articles`, JSON.stringify(article), { headers: this.headers }).
-      pipe(
+    return this.http.post(`${this.api}/articles`, JSON.stringify(article), { headers: this.headers })
+    .pipe(
         map(response => console.log(response.json())),
         catchError(this.errorHandler)
       );
