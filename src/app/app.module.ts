@@ -7,7 +7,7 @@ import { AdminComponent } from './admin/admin.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
-import { MatToolbarModule, MatSelectModule, MatInputModule } from '@angular/material';
+import { MatToolbarModule, MatSelectModule, MatInputModule, MatDialogModule, MatButtonModule } from '@angular/material';
 import { ArticlelistComponent } from './articlelist/articlelist.component';
 import { ArticledetailComponent } from './articledetail/articledetail.component';
 
@@ -23,6 +23,7 @@ import { NgxMdModule } from 'ngx-md';
 import { LMarkdownEditorModule } from 'ngx-markdown-editor';
 
 import { FormsModule } from '@angular/forms';
+import { LoginDialogComponent } from './login-dialog/login-dialog.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { FormsModule } from '@angular/forms';
     AdminComponent,
     ArticlelistComponent,
     ArticledetailComponent,
-    ArticleListItemComponent
+    ArticleListItemComponent,
+    LoginDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -39,13 +41,18 @@ import { FormsModule } from '@angular/forms';
     MatToolbarModule,
     MatSelectModule,
     MatInputModule,
+    MatDialogModule,
     AppRoutingModule,
     HttpModule,
     NgxMdModule.forRoot(),
     LMarkdownEditorModule,
-    FormsModule
+    FormsModule,
+    MatButtonModule
   ],
   providers: [DataService, ArticleResolver],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [
+    LoginDialogComponent
+]
 })
 export class AppModule { }

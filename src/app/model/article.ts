@@ -6,6 +6,7 @@ export class Article {
         public summary: string,
         public content: string,
         public author: string,
-        public title_img: string
+        public title_img: string,
+        public published = false
     ) {}
 }

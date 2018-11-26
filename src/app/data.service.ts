@@ -15,6 +15,7 @@ export class DataService {
   private api = 'http://localhost:3000';
   // private api = 'http://172.20.3.239:3000';
   private headers: Headers = new Headers();
+  public token: string;
 
   constructor(private http: Http) {
     this.headers.append('Content-Type', 'application/json');
@@ -27,6 +28,16 @@ export class DataService {
   getAllArticles(): Observable<Array<Article>> {
     return this.http
     .get(`${this.api}/articles`)
+    .pipe(retry(3),
+      map(response => response.json()),
+      map(rawBooks => rawBooks.map(rawArticle => ArticleFactory.fromObject(rawArticle))),
+      catchError(this.errorHandler)
+    );
+  }
+
+  getPublishedArticles(): Observable<Array<Article>> {
+    return this.http
+    .get(`${this.api}/articles?published=true`)
     .pipe(retry(3),
       map(response => response.json()),
       map(rawBooks => rawBooks.map(rawArticle => ArticleFactory.fromObject(rawArticle))),
@@ -60,5 +71,13 @@ export class DataService {
     .pipe(
       catchError(this.errorHandler)
     );
+  }
+
+  login(username: string, password: string) {
+    return this.http.post(`${this.api}/signin`, JSON.stringify({username, password}), { headers: this.headers })
+    .pipe(
+        map(response => console.log(response.json())),
+        catchError(this.errorHandler)
+      );
   }
 }

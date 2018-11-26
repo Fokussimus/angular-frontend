@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Article } from '../model/article';
 import { DataService } from '../data.service';
+import { MatDialog } from '@angular/material';
+import { LoginDialogComponent } from '../login-dialog/login-dialog.component';
 
 @Component({
   selector: 'app-admin',
@@ -15,12 +17,27 @@ export class AdminComponent implements OnInit {
   article: Article;
   emptyArticle = ArticleFactory.empty();
 
-  constructor(private ds: DataService) {
+  constructor(public dialog: MatDialog, private ds: DataService) {
     this.articles$ = ds.getAllArticles();
     this.article = ArticleFactory.empty();
   }
 
   ngOnInit() {
+    if (!this.ds.token) {
+      this.openDialog();
+    }
+  }
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(LoginDialogComponent, {
+      width: '500px',
+      disableClose: true
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      // this.animal = result;
+    });
   }
 
   saveArticle() {
@@ -29,6 +46,11 @@ export class AdminComponent implements OnInit {
     } else {
       this.ds.createArticle(this.article).subscribe(res => alert('Artikel gespeichert'));
     }
+  }
+
+  publishArticle() {
+    this.article.published = true;
+    this.ds.udpateArticle(this.article).subscribe(res => alert('Artikel veröffentlich'));
   }
 
 }

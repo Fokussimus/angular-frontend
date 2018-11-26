@@ -13,7 +13,8 @@ export class ArticleFactory {
         rawArticle.summary,
         rawArticle.content,
         rawArticle.author,
-        rawArticle.title_img
+        rawArticle.title_img,
+        rawArticle.published
         );
     }
 }
