@@ -6,6 +6,9 @@ import { DataService } from '../data.service';
 import { MatDialog } from '@angular/material';
 import { LoginDialogComponent } from '../login-dialog/login-dialog.component';
 
+import {MatChipInputEvent} from '@angular/material';
+import {COMMA, ENTER} from '@angular/cdk/keycodes';
+
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
@@ -16,6 +19,13 @@ export class AdminComponent implements OnInit {
   articles$: Observable<Article[]>;
   article: Article;
   emptyArticle = ArticleFactory.empty();
+
+  visible = true;
+  selectable = true;
+  removable = true;
+  addOnBlur = true;
+  readonly separatorKeysCodes: number[] = [ENTER, COMMA];
+  // tags: String[];
 
   constructor(public dialog: MatDialog, private ds: DataService) {
     this.articles$ = ds.getAllArticles();
@@ -51,6 +61,29 @@ export class AdminComponent implements OnInit {
   publishArticle() {
     this.article.published = true;
     this.ds.udpateArticle(this.article).subscribe(res => alert('Artikel veröffentlich'));
+  }
+
+  add(event: MatChipInputEvent): void {
+    const input = event.input;
+    const value = event.value;
+
+    // Add our fruit
+    if ((value || '').trim()) {
+      this.article.tags.push(value.trim());
+    }
+
+    // Reset the input value
+    if (input) {
+      input.value = '';
+    }
+  }
+
+  remove(tag: string): void {
+    const index = this.article.tags.indexOf(tag);
+
+    if (index >= 0) {
+      this.article.tags.splice(index, 1);
+    }
   }
 
 }

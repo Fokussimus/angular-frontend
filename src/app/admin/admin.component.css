@@ -15,3 +15,7 @@ mat-select {
 .btn_container {
     margin: 0px 5px 0px 5px;
 }
+
+.example-chip-list {
+    width: 100%;
+}

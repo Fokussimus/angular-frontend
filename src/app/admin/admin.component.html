@@ -22,6 +22,22 @@
     <md-editor name="Summary" [(ngModel)]="article.summary" [height]="'200px'" required></md-editor>
     <h2>Article Content:</h2>
     <md-editor name="Content" [(ngModel)]="article.content" [height]="'200px'" required></md-editor>
+
+    <mat-form-field class="example-chip-list">
+      <mat-chip-list #chipList>
+        <mat-chip *ngFor="let tag of article.tags" [selectable]="selectable"
+                 [removable]="removable" (removed)="remove(tag)">
+          {{tag}}
+          <mat-icon matChipRemove *ngIf="removable">X</mat-icon>
+        </mat-chip>
+        <input placeholder="New tag..."
+               [matChipInputFor]="chipList"
+               [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+               [matChipInputAddOnBlur]="addOnBlur"
+               (matChipInputTokenEnd)="add($event)">
+      </mat-chip-list>
+    </mat-form-field>
+
   <!-- <ng-template #empty>
       <md-editor *ngIf="article; else empty" name="Content" [(ngModel)]="content" [height]="'200px'" required></md-editor>
     </ng-template> -->

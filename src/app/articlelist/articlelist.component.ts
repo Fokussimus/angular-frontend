@@ -15,7 +15,7 @@ export class ArticlelistComponent implements OnInit {
   articles$: Observable<Article[]>;
 
   constructor(private ds: DataService) {
-    this.articles$ = ds.getAllArticles();
+    this.articles$ = ds.getPublishedArticles();
    }
 
   ngOnInit() {

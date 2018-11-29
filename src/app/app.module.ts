@@ -7,7 +7,7 @@ import { AdminComponent } from './admin/admin.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
-import { MatToolbarModule, MatSelectModule, MatInputModule, MatDialogModule, MatButtonModule } from '@angular/material';
+import { MatToolbarModule, MatSelectModule, MatInputModule, MatDialogModule, MatButtonModule, MatChipsModule, MatIconModule} from '@angular/material';
 import { ArticlelistComponent } from './articlelist/articlelist.component';
 import { ArticledetailComponent } from './articledetail/articledetail.component';
 
@@ -42,7 +42,9 @@ import { LoginDialogComponent } from './login-dialog/login-dialog.component';
     MatSelectModule,
     MatInputModule,
     MatDialogModule,
+    MatIconModule,
     AppRoutingModule,
+    MatChipsModule,
     HttpModule,
     NgxMdModule.forRoot(),
     LMarkdownEditorModule,
