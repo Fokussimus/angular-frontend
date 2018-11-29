@@ -24,8 +24,18 @@ export class LoginDialogComponent {
   }
 
   Login() {
-    console.log(this.ds.login(this.username, this.password));
+    this.ds.login(this.username, this.password).subscribe(res => {
+      if (res.status === 200) {
+        this.CloseDialog();
+      }
+    });
     
+  }
+  keyDownFunction(event) {
+    if(event.keyCode == 13) {
+      this.Login();
+      // rest of your code
+    }
   }
 
 }

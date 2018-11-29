@@ -1,12 +1,13 @@
-<h3>Login:</h3>
-<hr/>
-<mat-form-field>
-  <input matInput [(ngModel)]="username" placeholder="Username">
-</mat-form-field>
+<!-- <form> -->
+  <h3>Login:</h3>
+  <hr/>
+  <mat-form-field>
+    <input matInput [(ngModel)]="username" placeholder="Username">
+  </mat-form-field>
 
-<mat-form-field>
-  <input matInput type="password" [(ngModel)]="password" placeholder="Password">
-</mat-form-field>
+  <mat-form-field (keydown)="keyDownFunction($event)">
+    <input matInput type="password" [(ngModel)]="password" placeholder="Password">
+  </mat-form-field>
 
-<button mat-raised-button (click)="Login()">Ok</button>
-
+  <button mat-raised-button (click)="Login()">Ok</button>
+<!-- </form> -->

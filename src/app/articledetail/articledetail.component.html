@@ -2,8 +2,6 @@
   <h1>
   {{article.title}}
   </h1>
-  <p>
-    {{article.content}}
-  </p>
+  <ngx-md [data]="article.summary"></ngx-md>
   <ngx-md [data]="article.content"></ngx-md>
 </div>
